@@ -1,4 +1,4 @@
-module RestPack::Activity::Service::Serializers
+module RestPack::User::Service::Serializers
   class UserSerializer
     include RestPack::Serializer
 
