@@ -12,7 +12,7 @@ module RestPack::User::Service::Models
 
     belongs_to :user
 
-    def self.create_from_omniauth(application_id, omniauth)
+    def self.from_omniauth(application_id, omniauth)
       Authentication.new(
         application_id: application_id,
         provider: omniauth['provider'],
