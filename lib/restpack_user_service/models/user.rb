@@ -1,6 +1,6 @@
 module RestPack::User::Service::Models
-  class User < Base
-    restpack_table_name :users
+  class User < ActiveRecord::Base
+    self.table_name = :restpack_users
     attr_accessible :application_id, :description, :email, :image, :location, :name, :nickname
 
     validates_presence_of :application_id

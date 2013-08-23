@@ -1,10 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
-  def table_name
-    RestPack::User::Service.config.prefix_db_table(:users)
-  end
-
   def change
-    create_table table_name do |t|
+    create_table :restpack_users do |t|
       t.string :name, :limit => 128
       t.string :nickname, :limit => 128
       t.string :email, :limit => 512
