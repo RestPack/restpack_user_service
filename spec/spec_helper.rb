@@ -1,8 +1,4 @@
-require 'active_record'
-require 'rspec'
-require 'database_cleaner'
-require 'yaml'
-require 'shoulda-matchers'
+require 'restpack_service/support/spec_helper'
 require 'restpack_user_service'
 
 config = YAML.load_file('./config/database.yml')
@@ -12,9 +8,13 @@ migrations_path = File.dirname(__FILE__) + "/../db/migrate"
 migrator = ActiveRecord::Migrator.new(:up, migrations_path)
 migrator.migrate
 
+FactoryGirl.find_definitions
+
 DatabaseCleaner.strategy = :transaction
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+
   config.before(:each) do
     DatabaseCleaner.start
   end
