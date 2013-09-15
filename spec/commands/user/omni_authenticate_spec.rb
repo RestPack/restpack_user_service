@@ -41,4 +41,23 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
       end
     end
   end
+
+  context 'new user' do
+    let(:params) {
+      @authentication.omniauth['uid'] += '_new'
+      {
+        application_id: @authentication.application_id,
+        omniauth_response: @authentication.omniauth
+    } }
+
+    context 'new authentication' do
+      it 'created a new user and authentication' do
+        @existing_user_count = RestPack::User::Service::Models::User.count
+        @existing_auth_count = RestPack::User::Service::Models::Authentication.count
+        response.success?.should == true
+        RestPack::User::Service::Models::User.count.should == @existing_user_count + 1
+        RestPack::User::Service::Models::Authentication.count.should == @existing_auth_count + 1
+      end
+    end
+  end
 end
