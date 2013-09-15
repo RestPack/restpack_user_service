@@ -5,6 +5,8 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
   is_optional :user_id
 
   UserSerializer = RestPack::User::Service::Serializers::UserSerializer
+  User = RestPack::User::Service::Models::User
+  Authentication = RestPack::User::Service::Models::Authentication
 
   let(:response) { subject.class.run(params) }
 
@@ -50,11 +52,11 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
 
     context 'new authentication' do
       it 'created a new user and authentication' do
-        @existing_user_count = RestPack::User::Service::Models::User.count
-        @existing_auth_count = RestPack::User::Service::Models::Authentication.count
+        @existing_user_count = User.count
+        @existing_auth_count = Authentication.count
         response.success?.should == true
-        RestPack::User::Service::Models::User.count.should == @existing_user_count + 1
-        RestPack::User::Service::Models::Authentication.count.should == @existing_auth_count + 1
+        User.count.should == @existing_user_count + 1
+        Authentication.count.should == @existing_auth_count + 1
       end
     end
   end
