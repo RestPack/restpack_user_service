@@ -1,29 +1,13 @@
-# RestpackUserService
+# restpack_user_service
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/RestPack/restpack_user_service.png?branch=master)](https://travis-ci.org/RestPack/restpack_user_service)
 
-## Installation
+**Work In Progress**
 
-Add this line to your application's Gemfile:
+This gem provides services for managing Users and Authentications.
 
-    gem 'restpack_user_service'
+## Development Setup
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install restpack_user_service
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. install postgres
+2. create a `restpack_user_service_test` database
+3. rake
