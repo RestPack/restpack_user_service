@@ -28,7 +28,7 @@ module RestPack::User::Service::Models
         end
 
         user.save!
-        user.authentications << Authentication.create_from_omniauth(application_id, omniauth)
+        user.authentications << Authentication.from_omniauth(application_id, omniauth)
         user
       end
     end
