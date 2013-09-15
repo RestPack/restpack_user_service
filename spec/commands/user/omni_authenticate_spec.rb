@@ -9,7 +9,6 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
   UserSerializer = RestPack::User::Service::Serializers::UserSerializer
 
   let(:response) { subject.class.run(params) }
-  let(:params) { {} }
 
   before do
     @authentication = create(:authentication)
@@ -38,7 +37,7 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
       it 'returns the existing user' do
         response.success?.should == true
         response.result.should == UserSerializer.resource(@authentication.user)
-        @authentication.user.reload.authentications.length.should == 2
+        @authentication.user.authentications.length.should == 2
       end
     end
   end
