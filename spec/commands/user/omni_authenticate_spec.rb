@@ -1,7 +1,5 @@
 require_relative '../../spec_helper'
 
-
-
 describe RestPack::User::Service::Commands::User::OmniAuthenticate do
   is_required :application_id, :omniauth_response
   is_optional :user_id
