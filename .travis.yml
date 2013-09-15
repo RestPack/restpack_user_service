@@ -16,5 +16,6 @@ before_script:
   - sudo cp ./pg_hba.conf /etc/postgresql/9.2/main
   - sudo /etc/init.d/postgresql start
   - psql -c 'create database restpack_user_service_test;' -U postgres
+  - psql -c 'create role travis login;' -U postgres
 
 script: bundle exec rake test
