@@ -45,18 +45,24 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
   context 'new user' do
     let(:params) {
       @authentication.omniauth['uid'] += '_new'
-      {
+      return {
         application_id: @authentication.application_id,
         omniauth_response: @authentication.omniauth
-    } }
+      }
+    }
 
     context 'new authentication' do
       it 'created a new user and authentication' do
         @existing_user_count = User.count
         @existing_auth_count = Authentication.count
+
         response.success?.should == true
+
         User.count.should == @existing_user_count + 1
         Authentication.count.should == @existing_auth_count + 1
+
+        new_user = response.result[:users].first
+        new_user[:email].should == @authentication.omniauth['info']['email']
       end
     end
   end

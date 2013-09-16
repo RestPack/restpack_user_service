@@ -19,7 +19,7 @@ module RestPack::User::Service::Commands::User
       user = RestPack::User::Service::Models::User.authenticate(
         user_id,
         application_id,
-        omniauth_response
+        raw_inputs[:omniauth_response]
       )
 
       if user
