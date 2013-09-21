@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, :class => RestPack::User::Service::Models::User do
+  factory :user, :class => Models::User do
     sequence(:application_id)
     sequence(:description)  {|n| "Description ##{n}" }
     sequence(:email)        {|n| "email ##{n}" }

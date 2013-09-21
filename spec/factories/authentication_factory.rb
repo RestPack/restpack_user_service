@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :authentication, :class => RestPack::User::Service::Models::Authentication do
+  factory :authentication, :class => Models::Authentication do
     user
     application_id { user.application_id }
     provider 'twitter'

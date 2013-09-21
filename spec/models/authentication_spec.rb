@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RestPack::User::Service::Models::Authentication do
+describe Models::Authentication do
   it { should validate_presence_of(:application_id) }
   it { should validate_presence_of(:omniauth) }
   it { should validate_presence_of(:provider) }

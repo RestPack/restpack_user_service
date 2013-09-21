@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RestPack::User::Service::Models::User do
+describe Models::User do
   it { should validate_presence_of(:application_id) }
   it { should ensure_length_of(:name).is_at_most(128) }
   it { should ensure_length_of(:nickname).is_at_most(128) }

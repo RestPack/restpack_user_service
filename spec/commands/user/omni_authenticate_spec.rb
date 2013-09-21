@@ -1,12 +1,11 @@
 require_relative '../../spec_helper'
 
-describe RestPack::User::Service::Commands::User::OmniAuthenticate do
+describe Commands::User::OmniAuthenticate do
   is_required :application_id, :omniauth_response
   is_optional :user_id
 
-  UserSerializer = RestPack::User::Service::Serializers::UserSerializer
-  User = RestPack::User::Service::Models::User
-  Authentication = RestPack::User::Service::Models::Authentication
+  User = Models::User
+  Authentication = Models::Authentication
 
   let(:response) { subject.class.run(params) }
 
@@ -24,7 +23,7 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
     context 'existing authentication' do
       it 'returns the existing user' do
         response.success?.should == true
-        response.result.should == UserSerializer.resource(@authentication.user)
+        response.result.should == Serializers::User.resource(@authentication.user)
       end
     end
 
@@ -36,7 +35,7 @@ describe RestPack::User::Service::Commands::User::OmniAuthenticate do
 
       it 'returns the existing user' do
         response.success?.should == true
-        response.result.should == UserSerializer.resource(@authentication.user)
+        response.result.should == Serializers::User.resource(@authentication.user)
         @authentication.user.authentications.length.should == 2
       end
     end

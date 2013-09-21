@@ -10,4 +10,5 @@ This gem provides services for managing Users and Authentications.
 
 1. install postgres
 2. create a `restpack_user_service_test` database
-3. rake
+3. `bundle`
+4. `rake`
