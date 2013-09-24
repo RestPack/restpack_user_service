@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe Commands::User::OmniAuthenticate do
   is_required :application_id, :omniauth_response

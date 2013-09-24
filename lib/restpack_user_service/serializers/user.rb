@@ -7,6 +7,7 @@ module RestPack::User::Service::Serializers
 
     attributes :id, :application_id, :description, :email,
                :image, :avatar, :location, :name, :nickname, :href
+    can_include :authentications
     can_filter_by :application_id
 
     def avatar

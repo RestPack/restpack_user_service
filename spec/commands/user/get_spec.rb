@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe Commands::User::Get do
   is_required :id, :application_id
