@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'restpack_user_service/version'
+require 'restpack_users_service/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "restpack_user_service"

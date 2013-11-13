@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Models::Authentication do
+describe Models::Users::Authentication do
   it { should validate_presence_of(:application_id) }
   it { should validate_presence_of(:omniauth) }
   it { should validate_presence_of(:provider) }
@@ -11,7 +11,6 @@ describe Models::Authentication do
   it { should ensure_length_of(:uid).is_at_most(1024) }
 
   it { should belong_to(:user) }
-  it { subject.class.table_name.should == 'restpack_authentications' }
 
   let(:application_id) { 123 }
   let(:omniauth) { {

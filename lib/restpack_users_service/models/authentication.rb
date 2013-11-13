@@ -1,7 +1,6 @@
-
-module RestPack::User::Service::Models
+module Models::Users
   class Authentication < ActiveRecord::Base
-    self.table_name = :restpack_authentications
+    self.table_name = :restpack_user_authentications
 
     attr_accessible :application_id, :oauth, :provider, :uid, :user_id, :omniauth
     serialize :oauth, JSON

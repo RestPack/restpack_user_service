@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Commands::User::OmniAuthenticate do
+describe Commands::Users::User::OmniAuthenticate do
   is_required :application_id, :omniauth_response
   is_optional :user_id
 
-  User = Models::User
-  Authentication = Models::Authentication
+  User = Models::Users::User
+  Authentication = Models::Users::Authentication
 
   let(:response) { subject.class.run(params) }
 
@@ -23,7 +23,7 @@ describe Commands::User::OmniAuthenticate do
     context 'existing authentication' do
       it 'returns the existing user' do
         response.success?.should == true
-        response.result.should == Serializers::User.resource(@authentication.user)
+        response.result.should == Serializers::Users::User.resource(@authentication.user)
       end
     end
 
@@ -35,7 +35,7 @@ describe Commands::User::OmniAuthenticate do
 
       it 'returns the existing user' do
         response.success?.should == true
-        response.result.should == Serializers::User.resource(@authentication.user)
+        response.result.should == Serializers::Users::User.resource(@authentication.user)
         @authentication.user.authentications.length.should == 2
       end
     end

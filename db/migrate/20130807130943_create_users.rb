@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :restpack_users do |t|
+    create_table :restpack_user_users do |t|
       t.string :name, :limit => 128
       t.string :nickname, :limit => 128
       t.string :email, :limit => 512
