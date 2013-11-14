@@ -1,8 +1,8 @@
-module Serializers::Users
+module Serializers::User
   class Authentication
     include RestPack::Serializer
 
-    self.model_class = Models::Users::Authentication
+    self.model_class = Models::User::Authentication
     self.key = :authentications
 
     attributes :id, :provider, :uid

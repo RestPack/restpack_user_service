@@ -1,4 +1,4 @@
-module Models::Users
+module Models::User
   class Authentication < ActiveRecord::Base
     self.table_name = :restpack_user_authentications
 

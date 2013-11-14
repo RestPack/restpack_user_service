@@ -1,2 +1,2 @@
 require 'restpack_service'
-RestPack::Service::Loader.load 'users'
+RestPack::Service::Loader.load 'user'

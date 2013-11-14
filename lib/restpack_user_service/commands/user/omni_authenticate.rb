@@ -1,4 +1,4 @@
-module Commands::Users::User
+module Commands::User::User
   class OmniAuthenticate < RestPack::Service::Command
     required do
       integer :application_id
@@ -16,14 +16,14 @@ module Commands::Users::User
     end
 
     def execute
-      user = Models::Users::User.authenticate(
+      user = Models::User::User.authenticate(
         user_id,
         application_id,
         raw_inputs[:omniauth_response]
       )
 
       if user
-        return Serializers::Users::User.resource(user)
+        return Serializers::User::User.resource(user)
       else
         status :unauthorized
       end

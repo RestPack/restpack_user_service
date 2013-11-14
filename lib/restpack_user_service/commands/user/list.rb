@@ -1,5 +1,5 @@
-module Commands::Users::User
-  class List < RestPack::Service::Command
+module Commands::User::User
+  class List < RestPack::Service::Commands::List
     required do
       integer :application_id
     end
@@ -10,10 +10,6 @@ module Commands::Users::User
       string :include
       integer :page
       integer :page_size
-    end
-
-    def execute
-      Serializers::User.resource(inputs)
     end
   end
 end

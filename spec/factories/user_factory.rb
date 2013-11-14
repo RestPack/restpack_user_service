@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, :class => Models::Users::User do
+  factory :user, :class => Models::User::User do
     sequence(:application_id)
     sequence(:description)  {|n| "Description ##{n}" }
     sequence(:email)        {|n| "email ##{n}" }
