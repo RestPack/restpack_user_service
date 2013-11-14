@@ -1,4 +1,4 @@
-module Commands::User::User
+module Commands::Users::User
   class List < RestPack::Service::Commands::List
     required do
       integer :application_id
