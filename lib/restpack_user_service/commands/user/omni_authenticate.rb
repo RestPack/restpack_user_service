@@ -1,3 +1,5 @@
+require 'restpack_service_messaging'
+
 module Commands::Users::User
   class OmniAuthenticate < RestPack::Service::Command
     required do
@@ -23,10 +25,24 @@ module Commands::Users::User
       )
 
       if user
+        record_activity(user, inputs)
         return Serializers::Users::User.resource(user)
       else
         status :unauthorized
       end
+    end
+
+    private
+
+    def record_activity(user, inputs)
+      provider = inputs[:omniauth_response][:provider]
+      type = 'login' #TODO: GJ: differentiate between login and signup
+      Messaging::Activity::Create.run({
+        application_id: inputs[:application_id],
+        user_id: user.id,
+        content: "#{user.name} logged in via #{inputs[:omniauth_response][:provider]}",
+        tags: "service:users,auth:#{type},provider:#{provider}"
+      })
     end
   end
 end
