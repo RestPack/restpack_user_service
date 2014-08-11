@@ -1,8 +1,8 @@
-module Serializers::Users
+module Users::Serializers
   class User
     include RestPack::Serializer
 
-    self.model_class = Models::Users::User
+    self.model_class = Users::Models::User
     self.key = :users
 
     attributes :id, :application_id, :description, :email,

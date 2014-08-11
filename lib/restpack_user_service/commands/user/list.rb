@@ -1,4 +1,4 @@
-module Commands::Users::User
+module Users::Commands::User
   class List < RestPack::Service::Commands::List
     required do
       integer :application_id
@@ -7,9 +7,6 @@ module Commands::Users::User
     optional do
       integer :account_id
       string :email
-      string :include
-      integer :page
-      integer :page_size
     end
   end
 end

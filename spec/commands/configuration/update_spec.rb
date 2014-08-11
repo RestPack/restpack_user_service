@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Commands::Users::Configuration::Update do
+describe Users::Commands::Configuration::Update do
   let(:response) { subject.class.run(params) }
 
   before do
-    @configuration = Models::Users::Configuration.create({
+    @configuration = Users::Models::Configuration.create({
       application_id: 123,
       data: { 'auth_url' => 'http://somewhere.org/auth' }
     })
@@ -17,12 +17,12 @@ describe Commands::Users::Configuration::Update do
     }]
   } }
 
-  it 'updates the configuration' do
-    response.success?.should == true
-    response.result[:configurations].length.should == 1
-
-    @configuration.reload
-    @configuration.data['auth_url'].should == 'http://new.io/auth'
-    response.result[:configurations].first == Serializers::Users::Configuration.as_json(@configuration)
+  context 'with a valid request' do
+    it_succeeds 'and updates the configuration' do
+      expect(response.result[:configurations].length).to eq(1)
+      @configuration.reload
+      expect(@configuration.data['auth_url']).to eq('http://new.io/auth')
+      expect(response.result[:configurations].first).to eq(Users::Serializers::Configuration.as_json(@configuration))
+    end
   end
 end

@@ -1,6 +1,6 @@
 require 'restpack_service_messaging'
 
-module Commands::Users::User
+module Users::Commands::User
   class OmniAuthenticate < RestPack::Service::Command
     required do
       integer :application_id
@@ -18,7 +18,7 @@ module Commands::Users::User
     end
 
     def execute
-      user = Models::Users::User.authenticate(
+      user = Model.authenticate(
         user_id,
         application_id,
         raw_inputs[:omniauth_response]
@@ -26,7 +26,7 @@ module Commands::Users::User
 
       if user
         record_activity(user, inputs)
-        return Serializers::Users::User.resource(user)
+        return Serializer.resource(user)
       else
         status :unauthorized
       end
