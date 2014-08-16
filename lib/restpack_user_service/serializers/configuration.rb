@@ -1,8 +1,8 @@
-module Serializers::Users
+module Users::Serializers
   class Configuration
     include RestPack::Serializer
 
-    self.model_class = Models::Users::Configuration
+    self.model_class = Users::Models::Configuration
     self.key = :configurations
 
     attributes :id, :application_id, :auth_url

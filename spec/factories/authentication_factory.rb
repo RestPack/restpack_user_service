@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :authentication, :class => Models::Users::Authentication do
+  factory :authentication, :class => Users::Models::Authentication do
     user
     application_id { user.application_id }
     provider 'twitter'

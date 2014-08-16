@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commands::Users::Configuration::Get do
+describe Users::Commands::Configuration::Get do
   is_required :application_id
 
   let(:response) { subject.class.run(params) }
@@ -22,7 +22,7 @@ describe Commands::Users::Configuration::Get do
 
   context 'when a record exists' do
     before do
-      @configuration = Models::Users::Configuration.create({
+      @configuration = Users::Models::Configuration.create({
         application_id: 123,
         data: { 'auth_url' => 'http://somewhere.org/auth' }
       })

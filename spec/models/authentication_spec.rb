@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Models::Users::Authentication do
+describe Users::Models::Authentication do
   it { should validate_presence_of(:application_id) }
   it { should validate_presence_of(:omniauth) }
   it { should validate_presence_of(:provider) }

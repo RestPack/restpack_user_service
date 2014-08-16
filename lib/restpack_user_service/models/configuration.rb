@@ -1,4 +1,4 @@
-module Models::Users
+module Users::Models
   class Configuration < ActiveRecord::Base
     self.table_name = :restpack_user_configurations
 
