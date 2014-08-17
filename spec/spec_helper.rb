@@ -1,5 +1,8 @@
 require 'rspec'
 require 'restpack_service/support/spec_helper'
+
+require 'pry' #TODO: GJ: move to base
+
 require 'restpack_user_service'
 
 config = YAML.load_file('./config/database.yml')
