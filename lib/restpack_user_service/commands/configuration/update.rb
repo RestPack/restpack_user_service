@@ -1,5 +1,5 @@
 module Users::Commands::Configuration
-  class Update < RestPack::Service::Command
+  class Update < RestPack::Service::Commands::Update
     required do
       array :configurations do
         hash do
@@ -11,23 +11,14 @@ module Users::Commands::Configuration
       end
     end
 
-    def execute
-      result = {
-        configurations: []
+    private
+
+    def update_model(model, model_inputs)
+      model.data = {
+        auth_url: model_inputs[:auth_url]
       }
-
-      Model.transaction do
-        inputs[:configurations].each do |configuration|
-          model = Model.find configuration[:id]
-          model.data = {
-            auth_url: configuration[:auth_url]
-          }
-          model.save!
-          result[:configurations] << Serializer.as_json(model)
-        end
-      end
-
-      return result
+      model.save!
+      model
     end
   end
 end
